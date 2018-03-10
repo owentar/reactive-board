@@ -1,11 +1,16 @@
-import xs from 'xstream'
+import xs from 'xstream';
 
 export function App (sources) {
   const vtree$ = xs.of(
-    <div>My Awesome Cycle.js app</div>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col">TODO</div>
+        <div className="col">Doing</div>
+        <div className="col">Done</div>
+      </div>
+    </div>
   );
-  const sinks = {
-    DOM: vtree$
+  return {
+    DOM: vtree$,
   };
-  return sinks
 }
