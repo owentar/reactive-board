@@ -5,7 +5,7 @@ import { App } from './app'
 const main = App;
 
 const drivers = {
-  DOM: makeDOMDriver('#root')
+  DOM: makeDOMDriver('#root'),
 };
 
 run(main, drivers);
