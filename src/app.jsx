@@ -1,15 +1,26 @@
 import xs from 'xstream';
 
-export function App (sources) {
-  const vtree$ = xs.of(
+const model = () => {
+  return xs.of({
+    columns: ['TODO', 'Doing', 'Done'],
+  });
+};
+
+const view = (state$) => {
+  return state$.map(({ columns }) => (
     <div className="container-fluid">
       <div className="row">
-        <div className="col">TODO</div>
-        <div className="col">Doing</div>
-        <div className="col">Done</div>
+        { columns.map(column => <div className="col">{ column }</div>) }
       </div>
     </div>
-  );
+  ));
+};
+
+export function App (sources) {
+  const state$ = model();
+
+  const vtree$ = view(state$);
+
   return {
     DOM: vtree$,
   };
